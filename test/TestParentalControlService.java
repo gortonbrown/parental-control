@@ -41,7 +41,7 @@ public class TestParentalControlService {
 		return parentalControlService.getParentalControlLevel(movieId);
 	}
 	
-	@Test// (expected = TitleNotFoundException.class)
+	@Test
 	public void testSearchForNonExistantMovieWillThrowTitleNotFound() throws sony.exception.TitleNotFoundException																																						 {
 		parentalControlService = new ParentalControlService();
 	
@@ -49,8 +49,8 @@ public class TestParentalControlService {
 
 		thrown.expect(sony.exception.TitleNotFoundException.class);
 
-		try {
-			callParentalControlService("0000100094");
+		/*try {
+			callParentalControlService("000010694");
 			//fail("!!Unfortunately, The movie service could not find the requested movie");
 			//Assert.fail();
 		} catch (TitleNotFoundException e) {
@@ -59,10 +59,47 @@ public class TestParentalControlService {
 		} catch (TechnicalFailureException e) {
 			System.out.println("TechnicalFailureException error");
 			e.printStackTrace();
-		}
+		}*/
 
+		//Assert.fail();
+
+		callParentalControlService("00001000694");
 
 		
+		/*try {
+			assertEquals("2", parentalControlService.getParentalControlLevel("0000107054"));
+		} catch (TitleNotFoundException e) {
+			e.printStackTrace();
+		} catch (TechnicalFailureException e) {
+			e.printStackTrace();
+		}*/
+	}
+
+	@Test
+	public void testSearchMovieByIdWillReturnCorrectMovie() throws sony.exception.TitleNotFoundException																																						 {
+		parentalControlService = new ParentalControlService();
+
+		MovieController.addMovie(createMovie("00001000694"));
+
+		//thrown.expect(sony.exception.TitleNotFoundException.class);
+
+		/*try {
+			callParentalControlService("000010694");
+			//fail("!!Unfortunately, The movie service could not find the requested movie");
+			//Assert.fail();
+		} catch (TitleNotFoundException e) {
+			//Assert.assertEquals(new TitleNotFoundException().getMessage(), "Unfortunately, The movie service could not find the requested movie");
+			System.out.println(e.getMessage());
+		} catch (TechnicalFailureException e) {
+			System.out.println("TechnicalFailureException error");
+			e.printStackTrace();
+		}*/
+
+		//Assert.fail();
+
+		Movie movieResult = callParentalControlService("00001000694");
+
+
 		/*try {
 			assertEquals("2", parentalControlService.getParentalControlLevel("0000107054"));
 		} catch (TitleNotFoundException e) {
