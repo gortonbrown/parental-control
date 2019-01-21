@@ -1,4 +1,4 @@
-package sony.model;
+package skymovies.model;
 
 public class Customer {
 	public String firstname;

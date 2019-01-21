@@ -1,13 +1,13 @@
-package sony.controller;
+package skymovies.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
-import java.util.Set;
 
-import sony.exception.TitleNotFoundException;
-import sony.model.Movie;
+import skymovies.exception.TitleNotFoundException;
+import skymovies.model.Movie;
+
+import java.util.Set;
 
 public class MovieController {
 	public static HashMap<String, Movie> SonyMovieList = new HashMap<String, Movie>();
@@ -24,20 +24,18 @@ public class MovieController {
 		}
 	}
 	
-	public static Movie getMovieByTitle(String movieTitle){
+	public static Movie getMovieByTitle(String movieTitle) {
 		Movie movie = null;
 		Set<Entry<String, Movie>> movies = SonyMovieList.entrySet();
 		Iterator<Entry<String, Movie>> iterator = movies.iterator();
 		
-		while(iterator.hasNext()){
-			if (iterator.next().getValue().getTitle().equals(movieTitle))
-				movie = iterator.next().getValue();
+		while(iterator.hasNext()) {
+			Movie testMovie = iterator.next().getValue();
+			if (testMovie.getTitle().equals(movieTitle)) {			
+				movie = testMovie;
+			}
 		}
 		
 		return movie;
-	}
-	
-	public String getMovieCategory(Movie movie){
-		return movie.getMovieCategory();
 	}
 }

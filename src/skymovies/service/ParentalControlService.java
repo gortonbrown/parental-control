@@ -1,8 +1,8 @@
-package sony.service;
+package skymovies.service;
 
-import sony.controller.MovieController;
-import sony.exception.*;
-import sony.model.Movie;
+import skymovies.controller.MovieController;
+import skymovies.exception.*;
+import skymovies.model.Movie;
 
 public class ParentalControlService implements MovieService {
 	
@@ -10,6 +10,6 @@ public class ParentalControlService implements MovieService {
 	public String getParentalControlLevel(String movieId) throws TitleNotFoundException, TechnicalFailureException {
 		Movie movie = MovieController.getMovieById(movieId);
 	
-		return String.valueOf(movie.movieCategory.ordinal());
+		return String.valueOf(movie.getMovieCategory().getMovieLevel());
 	}
 }

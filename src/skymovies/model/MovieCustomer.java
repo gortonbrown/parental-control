@@ -1,5 +1,5 @@
 
-package sony.model;
+package skymovies.model;
 
 public class MovieCustomer extends Customer {
 	public MovieCategory movieCategoryPreferencce;

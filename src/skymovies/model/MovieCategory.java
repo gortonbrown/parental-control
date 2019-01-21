@@ -1,4 +1,4 @@
-package sony.model;
+package skymovies.model;
 
 public enum MovieCategory {
 	U,
@@ -7,7 +7,7 @@ public enum MovieCategory {
 	Fifteen,
 	Eighteen;
 	
-	public String getMovieCategory() {
+	public String getMovieRating() {
 		return getRating(this);
 	}
 	
@@ -23,4 +23,8 @@ public enum MovieCategory {
 		
 		return movieCategory.name();
 	}
+	
+	public int getMovieLevel(){
+		return this.ordinal();
+	}	
 }

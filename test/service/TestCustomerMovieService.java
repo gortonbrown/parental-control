@@ -3,13 +3,13 @@ package service;
 import org.junit.Assert;
 import org.junit.Test;
 
-import sony.controller.MovieController;
-import sony.exception.TechnicalFailureException;
-import sony.exception.TitleNotFoundException;
-import sony.model.Movie;
-import sony.model.MovieCategory;
-import sony.model.MovieCustomer;
-import sony.service.CustomerMovieService;
+import skymovies.controller.MovieController;
+import skymovies.exception.TechnicalFailureException;
+import skymovies.exception.TitleNotFoundException;
+import skymovies.model.Movie;
+import skymovies.model.MovieCategory;
+import skymovies.model.MovieCustomer;
+import skymovies.service.CustomerMovieService;
 
 public class TestCustomerMovieService {
 
@@ -18,12 +18,12 @@ public class TestCustomerMovieService {
 		CustomerMovieService customerMovieService = new CustomerMovieService();
 		boolean customerCanView = false;
 		MovieCustomer movieCustomer = createCustomer(MovieCategory.PG);
-		Movie deathlyHolidays = createMovie(MovieCategory.Eighteen);
+		Movie scaryHolidays = createMovie(MovieCategory.Eighteen);
 		
-		MovieController.addMovie(deathlyHolidays);
+		MovieController.addMovie(scaryHolidays);
 
 		try {
-			customerCanView = customerMovieService.displayMovieForCustomer(movieCustomer, deathlyHolidays);
+			customerCanView = customerMovieService.displayMovieForCustomer(movieCustomer, scaryHolidays);
 		} catch (TitleNotFoundException | TechnicalFailureException e) {
 			e.printStackTrace();
 		}
@@ -32,16 +32,16 @@ public class TestCustomerMovieService {
 	}
 
 	@Test
-	public void testCustomerWith_PG_Rating_ShouldHaveAccessTo_18_Movie() {
+	public void testCustomerWith_PG_Rating_ShouldHaveAccessTo_PG_Movie() {
 		CustomerMovieService customerMovieService = new CustomerMovieService();
 		boolean customerCanView = false;
 		MovieCustomer movieCustomer = createCustomer(MovieCategory.PG);
-		Movie deathlyHolidays = createMovie(MovieCategory.PG);
+		Movie happyHolidays = createMovie(MovieCategory.PG);
 
-		MovieController.addMovie(deathlyHolidays);
+		MovieController.addMovie(happyHolidays);
 
 		try {
-			customerCanView = customerMovieService.displayMovieForCustomer(movieCustomer, deathlyHolidays);
+			customerCanView = customerMovieService.displayMovieForCustomer(movieCustomer, happyHolidays);
 		} catch (TitleNotFoundException | TechnicalFailureException e) {
 			e.printStackTrace();
 		}
@@ -54,12 +54,12 @@ public class TestCustomerMovieService {
 		CustomerMovieService customerMovieService = new CustomerMovieService();
 		boolean customerCanView = false;
 		MovieCustomer movieCustomer = createCustomer(MovieCategory.Eighteen);
-		Movie deathlyHolidays = createMovie(MovieCategory.PG);
+		Movie happyHolidays = createMovie(MovieCategory.PG);
 
-		MovieController.addMovie(deathlyHolidays);
+		MovieController.addMovie(happyHolidays);
 
 		try {
-			customerCanView = customerMovieService.displayMovieForCustomer(movieCustomer, deathlyHolidays);
+			customerCanView = customerMovieService.displayMovieForCustomer(movieCustomer, happyHolidays);
 		} catch (TitleNotFoundException | TechnicalFailureException e) {
 			e.printStackTrace();
 		}

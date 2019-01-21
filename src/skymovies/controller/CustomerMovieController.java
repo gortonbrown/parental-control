@@ -1,11 +1,11 @@
-package sony.controller;
+package skymovies.controller;
 
-import sony.exception.TechnicalFailureException;
-import sony.exception.TitleNotFoundException;
-import sony.model.Customer;
-import sony.model.Movie;
-import sony.model.MovieCustomer;
-import sony.service.ParentalControlService;
+import skymovies.exception.TechnicalFailureException;
+import skymovies.exception.TitleNotFoundException;
+import skymovies.model.Customer;
+import skymovies.model.Movie;
+import skymovies.model.MovieCustomer;
+import skymovies.service.ParentalControlService;
 
 public class CustomerMovieController {
 	
@@ -17,9 +17,10 @@ public class CustomerMovieController {
 	}
 	
 	private static boolean isMovieWithinParentalControlLevel(String movieControlLevel, MovieCustomer customer){
-		if(Integer.valueOf(movieControlLevel) > customer.movieCategoryPreferencce.ordinal())
-			return false;
-		else 
-			return true;
+		boolean customerCanView = false;
+		if(customer.movieCategoryPreferencce.getMovieLevel() >= Integer.valueOf(movieControlLevel))
+			customerCanView = true;
+		 
+		return customerCanView;
 	}
 }

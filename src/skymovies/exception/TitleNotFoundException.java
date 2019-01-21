@@ -1,4 +1,4 @@
-package sony.exception;
+package skymovies.exception;
 
 public class TitleNotFoundException extends Exception {
 	public TitleNotFoundException() {

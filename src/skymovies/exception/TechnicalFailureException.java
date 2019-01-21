@@ -1,4 +1,4 @@
-package sony.exception;
+package skymovies.exception;
 
 public class TechnicalFailureException extends Error {
 	public TechnicalFailureException(String message) {
